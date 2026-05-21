@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакти - Київавтодор</title>
+    <link rel="stylesheet" href="site-styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Київавтодор</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="about.html">Про нас</a></li>
+                <li><a href="news.html">Новини</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="contacts-section">
+        <h2>Контакти</h2>
+
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <h3>Адреса</h3>
+                <p>Україна, 01104, м. Київ, вул. Петра Болбочана, 6</p>
+                <button class="copy-btn" data-copy="Україна, 01104, м. Київ, вул. Петра Болбочана, 6">Скопіювати</button>
+            </div>
+
+            <div class="contact-card">
+                <h3>Телефони</h3>
+                <p>Диспетчер: (044)284-74-19, (044)285-35-49</p>
+                <p>Приймальня: (044)285-03-36</p>
+                <p>Канцелярія: (044)284-72-90, (044)285-27-07</p>
+                <p>Пресслужба: (093)322-21-53</p>
+                <button class="copy-btn" data-copy="Диспетчер: (044)284-74-19, (044)285-35-49; Приймальня: (044)285-03-36; Канцелярія: (044)284-72-90, (044)285-27-07; Пресслужба: (093)322-21-53">Скопіювати всі</button>
+            </div>
+
+            <div class="contact-card">
+                <h3>E-mail</h3>
+                <p><a href="mailto:kyivavtodor@kyivcity.gov.ua">kyivavtodor@kyivcity.gov.ua</a></p>
+                <button class="copy-btn" data-copy="kyivavtodor@kyivcity.gov.ua">Скопіювати</button>
+            </div>
+
+            <div class="contact-card">
+                <h3>Web сторінка</h3>
+                <p><a href="https://kyivavtodor.kyivcity.gov.ua" target="_blank">https://kyivavtodor.kyivcity.gov.ua</a></p>
+                <button class="copy-btn" data-copy="https://kyivavtodor.kyivcity.gov.ua">Скопіювати</button>
+            </div>
+        </div>
+
+        <h3>Локація на карті</h3>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.7390816001065!2d30.516455276190726!3d50.44980507947518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf5aeb49f3dd%3A0x6b8e7a04f4b93bb5!2z0JTQvtC70YzRgtC10YDRgdGC0LLQuCDQndC40YbQsCwgMDEwNCwg0JrQvtC70LjRhtCwLCDQndC40YbQsCwg0JjQvdC-0LLQsNC90LjRjw!5e0!3m2!1suk!2sua!4v1693548054381!5m2!1suk!2sua" 
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © Київавтодор, 2026
+</footer>
+
+<script>
+    // Копіювання тексту кнопкою
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const text = btn.getAttribute('data-copy');
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Скопійовано: ' + text);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,824 @@
+/* ==========================
+   Загальні стилі для всього сайту
+========================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==========================
+   Контейнери
+========================== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================
+   Хедер
+========================== */
+header {
+    background: #0b3c5d;
+    color: #fff;
+    padding: 15px 0;
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 2em;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffd700;
+}
+
+/* ==========================
+   Footer
+========================== */
+footer {
+    background: #0b3c5d;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
+/* ==========================
+   Відео фон для головної
+========================== */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+/* ==========================
+   Контент поверх відео
+========================== */
+.content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+/* ==========================
+   Кнопки
+========================== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #FFD700;
+    color: #000;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #ffdb4d;
+    cursor: pointer;
+}
+
+/* ==========================
+   Секція вкладок громадян (головна)
+========================== */
+.citizens-section {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.citizens-section h2 {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.card-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    padding: 20px;
+    background: #FFD700;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    text-align: center;
+}
+
+.card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background: #ffdb4d;
+}
+
+/* ==========================
+   Сторінка новин
+========================== */
+/* Фонове фото на весь екран */
+.news-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/test.jpg') no-repeat center center;
+    background-size: cover;
+    filter: brightness(50%);
+    z-index: -1;
+}
+
+/* Секція новин поверх фото */
+.news-section {
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px;
+}
+
+/* Заголовок */
+.news-section h2 {
+    font-size: 2em;
+    color: #0b3c5d;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Форма додавання новин */
+.news-section form {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news-section input,
+.news-section textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Кнопка додавання */
+.news-section button.btn {
+    width: 150px;
+    padding: 10px;
+    background: #FFD700;
+    color: #000;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.news-section button.btn:hover {
+    background: #ffdb4d;
+}
+
+/* Сітка новин */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+/* Картка новини */
+.news-item {
+    background: #FFD700;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    color: #0b3c5d;
+}
+
+.news-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.news-date {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.news-content {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+/* Кнопка видалення */
+.delete-btn {
+    padding: 5px 10px;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background: #ff1a1a;
+}
+/* Фон для сторінки "Про нас" */
+.about-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/kiiov.jpg') no-repeat center center;
+    background-size: cover;
+    filter: brightness(60%);
+    z-index: -1;
+}
+
+/* Секція "Про нас" */
+.about-section {
+    position: relative;
+    z-index: 1;
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Заголовки */
+.about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #FFD700;
+}
+
+/* Текст */
+.about-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Сітка історії */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    margin-bottom: 40px;
+}
+
+/* Картки історії */
+.history-card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.history-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #FFD700;
+}
+
+.history-card p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.history-card .btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #FFD700;
+    color: #000;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.history-card .btn:hover {
+    background: #ffdb4d;
+}
+/* ==========================
+   Сторінка Контакти
+========================== */
+.contacts-section {
+    padding: 60px 20px;
+    text-align: center;
+    color: #000;
+    background: #f5f5f5;
+}
+
+.contacts-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #000; /* Чорний колір */
+}
+
+
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+    justify-items: center;
+}
+
+.contact-card {
+    background: #FFD700;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.contact-card h3 {
+    margin-bottom: 10px;
+    color: #0b3c5d;
+}
+
+.contact-card a {
+    color: #0b3c5d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+.copy-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #0b3c5d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.copy-btn:hover {
+    background: #1a4d80;
+}
+
+.map-container {
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+/* ==========================
+   Звернення громадян
+========================== */
+.appeals-section {
+    background: #FFD700; /* жовтий фон для секції */
+    padding: 40px 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.appeals-section h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #000;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Офіційний текст — білий фон напівпрозорий */
+.official-text {
+    background: rgba(255, 255, 255, 0.95); /* білий напівпрозорий фон */
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: #000; /* чорний текст */
+    line-height: 1.7;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Форма надсилання звернення */
+#appealForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#appealForm input,
+#appealForm textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    color: #000;
+}
+
+#appealForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#appealForm button.btn {
+    width: 180px;
+    padding: 10px;
+    background: #0b3c5d;
+    color: #FFD700;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+#appealForm button.btn:hover {
+    background: #094263;
+    color: #fff;
+}
+
+/* Сітка відправлених звернень */
+.appeals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+/* Картка звернення */
+.appeal-item {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    position: relative;
+}
+
+.appeal-item b {
+    font-size: 1.1em;
+}
+
+.appeal-date {
+    font-size: 0.85em;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Кнопка видалення */
+.delete-appeal-btn {
+    padding: 5px 10px;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.delete-appeal-btn:hover {
+    background: #ff1a1a;
+}
+/* ==========================
+   Секція безбар'єрності
+========================== */
+.accessibility-section {
+    background: #ffd700;
+    padding: 30px 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.accessibility-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Сітка карток */
+.accessibility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+/* Картки */
+.accessibility-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    width: 250px;
+    background: #0b3c5d;
+    color: #ffd700;
+    font-weight: 600;
+    font-size: 1.1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+.accessibility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: #004466;
+}
+
+/* Статті */
+.article-section {
+    background: rgba(255,255,255,0.95);
+    padding: 25px 20px;
+    border-radius: 10px;
+    color: #000;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+.article-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+/* ==========================
+   Секція Укриття
+========================== */
+.shelters-section {
+    background: #ffd700; /* жовтий фон */
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.shelters-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.shelters-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Кнопка для карти укриттів */
+.shelters-btn-container {
+    margin-top: 30px;
+}
+
+.shelters-btn {
+    display: inline-block;
+    padding: 15px 25px;
+    background: #0b3c5d;
+    color: #ffd700;
+    font-weight: 600;
+    font-size: 1.1em;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    text-decoration: none;
+}
+
+.shelters-btn:hover {
+    background: #004466;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+/* ==========================
+   Секція Керівництво
+========================== */
+.leadership-section {
+    background: #ffd700; /* жовтий фон */
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.leadership-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.leadership-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+/* Сітка керівників */
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+/* Картка керівника */
+.leader-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.leader-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.leader-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.leader-card h3 {
+    font-size: 1.3em;
+    margin: 10px 0 5px 0;
+    color: #0b3c5d;
+}
+
+.leader-card p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #0b3c5d;
+}
+
+.leader-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0b3c5d;
+    color: #ffd700;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.leader-card .btn:hover {
+    background: #004466;
+    transform: translateY(-3px);
+}
+/* ==========================
+   Графік роботи
+========================== */
+.schedule-section {
+    background: #FFD700;
+    padding: 60px 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #000; /* текст по центру та чорний */
+}
+
+.schedule-section h2 {
+    font-size: 2em;
+    color: #0b3c5d;
+    margin-bottom: 30px;
+}
+
+.schedule-section p {
+    font-size: 1.2em;
+    color: #000;
+    margin-bottom: 40px;
+}
+
+/* Сітка для графіка */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    align-items: stretch;
+}
+
+/* Картки графіка */
+.schedule-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.schedule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.schedule-card h3 {
+    color: #0b3c5d;
+    margin-bottom: 15px;
+}
+
+.schedule-card p {
+    color: #000;
+    margin: 8px 0;
+    font-size: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+

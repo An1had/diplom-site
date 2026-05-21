@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Звернення громадян</title>
+    <link rel="stylesheet" href="site-styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Київавтодор</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="about.html">Про нас</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="appeals-section">
+        <h2>Звернення громадян</h2>
+
+        <div class="official-text">
+            <p>
+                Шановні громадяни!<br><br>
+                Якщо Ви бажаєте отримати офіційну відповідь на Ваше звернення, 
+                Ви маєте надіслати листа у письмовій формі на адресу: 
+                01104, Київ, вул. Петра Болбочана (К. Каменєва), 6.
+            </p>
+            <p>
+                Відповідно до статті 5 Закону України «Про звернення громадян», 
+                у зверненні має бути зазначено прізвище, ім’я, по-батькові, 
+                місце проживання громадянина, викладено суть порушеного питання, 
+                зауваження, пропозиції, заяви чи скарги, прохання чи вимоги. 
+                Письмове звернення має бути підписано заявником із зазначенням дати. 
+                У разі недотримання цих вимог звернення розгляду не підлягає.
+            </p>
+            <p>
+                Відповідно до Закону України від 2 липня 2015 року № 577-VIII 
+                «Про внесення змін до Закону України «Про звернення громадян» 
+                щодо електронного звернення та електронної петиції» 
+                з 28 жовтня 2015 року письмове звернення також може бути 
+                надіслане з використанням мережі Інтернет, засобів електронного зв’язку (електронне звернення).
+            </p>
+            <p>
+                Адреса для електронних звернень громадян: <b>kyivavtodor@kyivcity.gov.ua</b>
+            </p>
+        </div>
+
+        <!-- Форма надсилання звернення -->
+        <form id="appealForm">
+            <input type="text" id="name" placeholder="Ваше ім'я" required>
+            <input type="email" id="email" placeholder="Ваш email" required>
+            <textarea id="message" placeholder="Текст звернення" required></textarea>
+            <button type="submit" class="btn">Надіслати звернення</button>
+        </form>
+
+        <!-- Контейнер для відображення звернень -->
+        <div id="appealsContainer" class="appeals-grid"></div>
+    </section>
+
+</main>
+
+<footer>
+    © Київавтодор, 2026
+</footer>
+
+<script>
+    // Завантаження звернень
+    async function loadAppeals() {
+        const res = await fetch('/api/feedback-test');
+        const appeals = await res.json();
+        const container = document.getElementById('appealsContainer');
+        container.innerHTML = '';
+
+        appeals.forEach(a => {
+            const div = document.createElement('div');
+            div.classList.add('appeal-item');
+            div.innerHTML = `
+                <div><b>${a.name}</b> (${a.email})</div>
+                <div>${a.message}</div>
+                <div class="appeal-date">${a.date}</div>
+                <button class="delete-appeal-btn" data-id="${a.id}">Видалити</button>
+            `;
+            container.appendChild(div);
+        });
+
+        document.querySelectorAll('.delete-appeal-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const id = btn.getAttribute('data-id');
+                await fetch('/api/feedback/' + id, { method: 'DELETE' });
+                loadAppeals();
+            });
+        });
+    }
+
+    // Обробка форми
+    document.getElementById('appealForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        const res = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message })
+        });
+
+        const data = await res.json();
+        if(data.message) {
+            alert('Звернення надіслано!');
+            document.getElementById('appealForm').reset();
+            loadAppeals();
+        }
+    });
+
+    loadAppeals();
+</script>
+
+</body>
+</html>

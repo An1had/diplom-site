@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Новини</title>
+    <link rel="stylesheet" href="site-styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Київавтодор</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="about.html">Про нас</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Фонове фото на весь екран з паралаксом -->
+    <div class="news-background"></div>
+
+    <section class="news-section">
+        <h2>Новини</h2>
+
+        <!-- Форма додавання новини -->
+        <form id="newsForm">
+            <input type="text" id="title" placeholder="Заголовок" required>
+            <textarea id="content" placeholder="Текст новини" required></textarea>
+            <input type="date" id="date" required>
+            <button type="submit" class="btn">Додати новину</button>
+        </form>
+
+        <!-- Контейнер новин -->
+        <div id="newsContainer" class="news-grid"></div>
+    </section>
+
+</main>
+
+<footer>
+    © Київавтодор, 2026
+</footer>
+
+<script>
+    // Завантаження новин
+    async function loadNews() {
+        const res = await fetch('/api/news-test');
+        const news = await res.json();
+        const container = document.getElementById('newsContainer');
+        container.innerHTML = '';
+
+        news.forEach(n => {
+            const div = document.createElement('div');
+            div.classList.add('news-item');
+            div.innerHTML = `
+                <div class="news-title">${n.title}</div>
+                <div class="news-date">${n.date}</div>
+                <div class="news-content">${n.content}</div>
+                <button class="delete-btn" data-id="${n.id}">Видалити</button>
+            `;
+            container.appendChild(div);
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const id = btn.getAttribute('data-id');
+                await fetch('/api/news/' + id, { method: 'DELETE' });
+                loadNews();
+            });
+        });
+    }
+
+    document.getElementById('newsForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+        const date = document.getElementById('date').value;
+
+        const res = await fetch('/api/news', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, content, date })
+        });
+
+        const data = await res.json();
+        if(data.message) {
+            alert('Новина додана!');
+            document.getElementById('newsForm').reset();
+            loadNews();
+        }
+    });
+
+    loadNews();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
